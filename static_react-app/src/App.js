@@ -1,22 +1,20 @@
 
 import './App.css';
+import Employee from './components/Employee'  
 
 function App() {
+
+  const showEmployees = false;
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Hello World this is my first app 
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {showEmployees ? 
+        <Employee></Employee> 
+
+      : <p> You cannot see the Employee</p>
+      
+      }
+      
+      
     </div>
   );
 }
