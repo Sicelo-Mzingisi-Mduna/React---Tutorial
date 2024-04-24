@@ -4,11 +4,11 @@ import Employee from './components/Employee'
 
 function App() {
 
-  const showEmployees = false;
+  const showEmployees = true;
   return (
     <div className="App">
       {showEmployees ? 
-        <Employee></Employee> 
+        <Employee Tile = "Sales" Name = "Sicelo" ></Employee> 
 
       : <p> You cannot see the Employee</p>
       
