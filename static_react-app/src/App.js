@@ -1,38 +1,35 @@
 import './App.css';
-import Employee from './components/Employee'
-import {useState} from 'react'
+import React from 'react';
+import {useState} from 'react';
+
 
 function App() {
 
-  const showEmployees = true;
-  const [Name, setName] = useState('Sicelo');
-  return (
-    <div className="App">
-      {showEmployees ?
-      
-        <>
-          <input type="text" onChange = 
-          {(e) => 
-            {
-              console.log(e.target.value)
-              setName(e.target.value)
-            }
-          }
-          /> 
-          <Employee Tile = "Sales" Name = {Name} ></Employee>
+  const [count, setCount] = useState(0)
 
-        </>
+  function decrementCount(){
 
-      : <>
-          <p> You cannot see the Employee</p>
-        </>
-      
+    setCount(count - 1)
+  }
 
-      }
-      
-      
-    </div>
-  );
+  function incrementCount(){
+
+    setCount(count + 1)
+  }
+  return(
+
+    <>
+
+      <button onClick = {decrementCount}> - </button>
+      <span> {count} </span>
+      <button onClick = {incrementCount}> + </button>
+    
+    
+    </>
+
+  )
+
+  
 }
 
 export default App;
