@@ -9,12 +9,12 @@ function App() {
 
   function decrementCount(){
 
-    setCount(count - 1)
+    setCount(prev_count => prev_count - 1)
   }
 
   function incrementCount(){
 
-    setCount(count + 1)
+    setCount(prev_count => prev_count + 1)
   }
   return(
 
