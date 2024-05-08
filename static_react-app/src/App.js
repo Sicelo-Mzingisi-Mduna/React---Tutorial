@@ -5,24 +5,22 @@ import {useState} from 'react';
 
 function App() {
 
-  const [count, setCount] = useState(0)
+  
+  const [resourceType, setResourceType] = useState("post");
 
-  function decrementCount(){
-
-    setCount(prev_count => prev_count - 1)
-  }
-
-  function incrementCount(){
-
-    setCount(prev_count => prev_count + 1)
-  }
   return(
 
     <>
 
-      <button onClick = {decrementCount}> - </button>
-      <span> {count} </span>
-      <button onClick = {incrementCount}> + </button>
+      <div>
+      <button onClick = {() => setResourceType("Posts")}> Posts </button>
+      <button onClick = {() => setResourceType("Users")}> Users </button>
+      <button onClick = {() => setResourceType("Comments")}> Comments </button>
+      </div>
+
+      <h1> {resourceType} </h1>
+
+      
     
     
     </>
