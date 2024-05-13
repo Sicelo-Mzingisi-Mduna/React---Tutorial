@@ -1,37 +1,39 @@
 import './App.css';
 import React from 'react';
-import {useState, useEffect} from 'react';
+import { useState, useMemo } from 'react';
 
 
 function App() {
 
-  const [resourceType, setResourceType] = useState("Posts");
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/${resourceType}`)
-      .then(response => response.json())
-      .then(json => setItems(json))
-  }, [resourceType])
-
   
+  const [number, setNumber] = useState(0);
+  const [dark, setDark] = useState(false);
+  const doubleNumber = useMemo(() => {
+    return slowFunction(number)}, [number]);
+
+  const themeStyles = {
+    backgroundColor: dark ? 'black' : 'white',
+    color: dark ? 'white' : 'black'
+  }
   
+  function slowFunction(number){
+    console.log("Calling slow function");
+    for(let i = 0; i < 10000000; i++){
+
+    }
+    return number * 2
+  }
 
   return(
 
     <>
-
       <div>
-      <button onClick = {() => setResourceType("posts")}> Posts </button>
-      <button onClick = {() => setResourceType("users")}> Users </button>
-      <button onClick = {() => setResourceType("comments")}> Comments </button>
+      <input type = "number" value = {number} onChange = {(e) => setNumber(parseInt (e.target.value))} ></input>
       </div>
-      <h1>{resourceType}</h1>
-      {items.map(item => {
-        return <pre>{JSON.stringify(item)}</pre>
-      })}
-    
+      <button onClick = {() => setDark(prev_dark => !prev_dark)}> Change Theme</button>
+      <div style = {themeStyles}>{doubleNumber}</div>
     </>
+
 
   )
 
